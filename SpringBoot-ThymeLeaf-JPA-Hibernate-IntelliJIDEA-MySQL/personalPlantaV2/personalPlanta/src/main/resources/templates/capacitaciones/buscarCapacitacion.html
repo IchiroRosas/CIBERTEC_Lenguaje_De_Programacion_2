@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Búsqueda de Capacitaciones</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+<div class="container my-2">
+    <h1>Búsqueda de Capacitaciones</h1>
+    <br>
+    <form th:action="@{/capacitaciones/busquedaCapacitacion}">
+        Fecha Inicio
+        <input type="date" name="fechaIni" th:value="${fechaIni != null ? #dates.format(fechaIni, 'yyyy-MM-dd') : ''}">
+        Fecha Fin
+        <input type="date" name="fechaFin" th:value="${fechaFin != null ? #dates.format(fechaFin, 'yyyy-MM-dd') : ''}">
+        <button type="submit" class="btn btn-primary btn-sm mb-3">Buscar</button>
+    </form>
+    <br>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th> Capacitación</th>
+            <th> Fecha Inicio</th>
+            <th> Fecha Fin</th>
+            <th> Estado</th>
+            <th> Creditos</th>
+            <th> Detalle </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="capacitacion: ${listaCapacitaciones}">
+            <td th:text="${capacitacion.getDescripcion()}" ></td>
+            <td th:text="${#dates.format(capacitacion.getFechaInicio(), 'dd/MM/yyyy')}" ></td>
+            <td th:text="${#dates.format(capacitacion.getFechaFin(), 'dd/MM/yyyy')}" ></td>
+            <td th:switch="${capacitacion.getEstado()}">
+                <span th:case="'0'">Programado</span>
+                <span th:case="'1'">Realizado</span>
+                <span th:case="'2'">Postergado</span>
+            </td>
+            <td th:text="${capacitacion.getCreditos()}" ></td>
+            <td>
+                <a th:href="@{/capacitaciones/capacitacionDetalle/{id}(id=${capacitacion.id})}"  class="btn btn-primary"> Ver Participantes</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
+
+
