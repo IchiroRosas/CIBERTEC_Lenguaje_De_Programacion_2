@@ -1,0 +1,25 @@
+<div id="nav">
+  <ul>
+    <li>
+      <table>
+        <tr>
+          <td>
+            <img src="http://imgfz.com/i/ftVCAs1.png" id="imgLogo">
+          </td>
+          <td style="text-align: center; vertical-align: center">
+            <label style="color: white; font-weight: bold">Sistema de RRHH </label>
+          </td>
+        </tr>
+      </table>
+    </li>
+    <li><a th:href="@{/empleados/listarEmpleados}">Empleados</a></li>
+    <li>
+      <a>Capacitaciones</a>
+      <ul>
+        <li><a th:href="@{/capacitaciones/listarCapacitaciones}">Listado Capacitaciones</a></li>
+        <li><a th:href="@{/capacitaciones/inicioBusqueda}">Buscar Capacitación</a></li>
+      </ul>
+    </li>
+    <li><a th:href="@{/vacaciones/listarVacaciones}">Vacaciones</a></li>
+    <li style="float: right;"><a th:href="@{/acceso/logout}"> <img src="imgfz.com/i/nyd9eNg.png" style="width: 25%">  Logout</a></li>  </ul>
+</div>
