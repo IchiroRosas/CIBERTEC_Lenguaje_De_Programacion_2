@@ -1,0 +1,55 @@
+<div id="nav">
+    <ul>
+        <li><a th:href="@{/clientes/infoCliente/{id}(id=${usuario.getId_usuario()})}">Mis Datos Personales</a></li>
+        <li><a th:href="@{/reclamos/listarReclamos}">Reclamos</a></li>
+        <li><a th:href="@{/reclamos/reporteReclamos}">Reporte</a></li>
+        <li style="float: right;"><a th:href="@{/acceso/logout}">Logout</a></li>
+        <li style="float: right;"><a th:href="@{/acceso/paginaPrincipal}">Página principal</a></li>
+    </ul>
+</div>
+
+<style>
+    #nav {
+        background-color: #333333;
+        overflow: hidden;
+    }
+
+    #nav ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    #nav li {
+        float: left;
+    }
+
+    #nav a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+
+    #nav a:hover {
+        background-color: #ddd;
+        color: black;
+    }
+
+    /* Submenu styles */
+    #nav li ul {
+        display: none;
+        position: absolute;
+        background-color: #333;
+    }
+
+    #nav li:hover ul {
+        display: block;
+    }
+
+    #nav li ul li {
+        float: none;
+        display: block;
+    }
+</style>
